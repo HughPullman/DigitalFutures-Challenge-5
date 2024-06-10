@@ -24,15 +24,37 @@ const changePassword = async ({ username, password, newPassword }) => {
     const user = await User.findOne({ username });
     
     if (user && password === user.password) {
-            user.password = newPassword;
-            return user;
+        user.password = newPassword;
+        user.save();
+        return user;
     }
     throw new Error();
     
 }
 
+const addLocation = async ({ username, password, location }) => {
+    const user = await User.findOne({ username });
+
+    if (user && password === user.password) {
+        user.savedLocations.push(location);
+        return user.savedLocations;
+    }
+    throw new Error();
+}
+
+const getLocations = async ({ username, password }) => {
+    const user = await User.findOne({ username });
+
+    if (user && password === user.password) {
+        return user.savedLocations;
+    }
+    throw new Error();
+}
+
 export const userService = {
     login,
     register,
-    changePassword
+    changePassword,
+    addLocation,
+    getLocations
 };

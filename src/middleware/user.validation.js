@@ -15,3 +15,14 @@ export const changePasswordValidation = [
     check("password").exists().isString(),
     check("newPassword").exists().isString()
 ];
+
+export const addLocationValidation = [
+    check("username").exists().isString(),
+    check("password").exists().isString(),
+    check("location").exists().isString()
+];
+
+export const getLocationsValidation = [
+    check("username").exists().isString(),
+    check("password").exists().isString(),
+];
