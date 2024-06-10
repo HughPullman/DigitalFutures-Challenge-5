@@ -9,6 +9,7 @@ import { changePasswordRouter } from "./src/routes/changePassword.route.js";
 import { getLocationsRouter } from "./src/routes/getLocations.route.js";
 import { loginRouter } from "./src/routes/login.route.js";
 import { registerRouter } from "./src/routes/register.route.js";
+import { deleteLocationRouter } from "./src/routes/deleteLocation.route.js";
 
 config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -30,6 +31,7 @@ app.use('/register', registerRouter);
 app.use('/passChange', changePasswordRouter);
 app.use('/addLocation', addLocationRouter);
 app.use('/getLocations', getLocationsRouter);
+app.use('/deleteLocation', deleteLocationRouter);
 
 const server = app.listen(process.env.PORT, () => {
     console.log(`Server is running on : ${server.address().address}:${server.address().port}`);

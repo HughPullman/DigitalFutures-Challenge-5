@@ -37,6 +37,7 @@ const addLocation = async ({ username, password, location }) => {
 
     if (user && password === user.password) {
         user.savedLocations.push(location);
+        user.save();
         return user.savedLocations;
     }
     throw new Error();
@@ -51,10 +52,22 @@ const getLocations = async ({ username, password }) => {
     throw new Error();
 }
 
+const deleteLocation = async ({ username, password, location }) => {
+    const user = await User.findOne({ username });
+
+    if (user && password === user.password) {
+        user.savedLocations = user.savedLocations.filter(e => e !== location);
+        user.save();
+        return user.savedLocations;
+    }
+    throw new Error();
+}
+
 export const userService = {
     login,
     register,
     changePassword,
     addLocation,
-    getLocations
+    getLocations,
+    deleteLocation
 };

@@ -26,3 +26,36 @@ content-type: application/json
     "password": "pass",
     "newPassword": "pass2"
 }
+
+###
+
+POST http://localhost:3000/addLocation
+content-type: application/json
+
+{
+    "username": "hugh",
+    "password": "pass2",
+    "location": "France"
+}
+
+###
+
+POST http://localhost:3000/getLocations
+content-type: application/json
+
+{
+    "username": "hugh",
+    "password": "pass2"
+}
+
+###
+
+POST http://localhost:3000/deleteLocation
+content-type: application/json
+
+{
+    "username": "hugh",
+    "password": "pass2",
+    "location": "France"
+}
+

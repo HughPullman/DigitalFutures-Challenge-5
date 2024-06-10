@@ -26,3 +26,9 @@ export const getLocationsValidation = [
     check("username").exists().isString(),
     check("password").exists().isString(),
 ];
+
+export const deleteLocationValidation = [
+    check("username").exists().isString(),
+    check("password").exists().isString(),
+    check("location").exists().isString()
+];

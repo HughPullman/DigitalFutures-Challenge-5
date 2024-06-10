@@ -1,7 +1,7 @@
 import express from "express";
 
-import { getLocationsController } from "../controllers/getLocations.controller";
-import { getLocationsValidation } from "../middleware/user.validation";
+import { getLocationsController } from "../controllers/getLocations.controller.js";
+import { getLocationsValidation } from "../middleware/user.validation.js";
 
 const router = express.Router();
 
