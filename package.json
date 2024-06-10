@@ -1,0 +1,26 @@
+{
+  "name": "challenge-5-travel-info-back-end-hughpullman",
+  "version": "1.0.0",
+  "description": "travel info back-end",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "SET NODE_ENV=dev&&nodemon index.js",
+    "test": "mocha"
+  },
+  "author": "Hugh Pullman",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0",
+    "mongoose": "^8.4.1"
+  },
+  "devDependencies": {
+    "c8": "^9.1.0",
+    "chai": "^5.1.1",
+    "mocha": "^10.4.0",
+    "sinon": "^18.0.0"
+  }
+}
