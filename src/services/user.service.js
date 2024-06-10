@@ -19,7 +19,20 @@ const register = async ({ username, password }) => {
     }
 }
 
+const changePassword = async ({ username, password, newPassword }) => {
+
+    const user = await User.findOne({ username });
+    
+    if (user && password === user.password) {
+            user.password = newPassword;
+            return user;
+    }
+    throw new Error();
+    
+}
+
 export const userService = {
     login,
-    register
+    register,
+    changePassword
 };
