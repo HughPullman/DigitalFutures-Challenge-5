@@ -4,7 +4,7 @@ const login = async ({ username, password }) => {
     const user = await User.findOne({ username });
 
     if (user && password === user.password) {
-        return user;
+        return user._id;
     }
 
     throw new Error();
@@ -12,8 +12,11 @@ const login = async ({ username, password }) => {
 
 const register = async ({ username, password }) => {
     try {
+        const user = await User.findOne({ username });
+        if (user) throw new Error("User already exists!");
         const newUser = new User({ username, password });
-        return await newUser.save();
+        await newUser.save();
+        return;
     } catch (e) {
         throw e;
     }
@@ -32,30 +35,33 @@ const changePassword = async ({ username, password, newPassword }) => {
     
 }
 
-const addLocation = async ({ username, password, location }) => {
-    const user = await User.findOne({ username });
+const addLocation = async ({ id, location }) => {
+    const user = await User.findOne({ _id: id });
 
-    if (user && password === user.password) {
-        user.savedLocations.push(location);
-        user.save();
+    if (user) {
+        const containsLoc = user.savedLocations.includes(location);
+        if (!containsLoc) {
+            user.savedLocations.push(location);
+            user.save();
+        }
+        return;
+    }
+    throw new Error();
+}
+
+const getLocations = async ({ id }) => {
+    const user = await User.findOne({ _id: id });
+
+    if (user) {
         return user.savedLocations;
     }
     throw new Error();
 }
 
-const getLocations = async ({ username, password }) => {
-    const user = await User.findOne({ username });
+const deleteLocation = async ({ id,  location }) => {
+    const user = await User.findOne({ _id: id });
 
-    if (user && password === user.password) {
-        return user.savedLocations;
-    }
-    throw new Error();
-}
-
-const deleteLocation = async ({ username, password, location }) => {
-    const user = await User.findOne({ username });
-
-    if (user && password === user.password) {
+    if (user) {
         user.savedLocations = user.savedLocations.filter(e => e !== location);
         user.save();
         return user.savedLocations;

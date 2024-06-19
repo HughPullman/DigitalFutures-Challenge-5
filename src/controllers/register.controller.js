@@ -10,6 +10,6 @@ export const registerController = async (req, res) => {
         const user = await userService.register(req.body);
         res.status(201).json({ user });
     } catch (e) {
-        res.status(400).send(`Creating new user failed`);
+        res.status(400).send(`Creating new user failed, ${e.message}`);
     }
 };

@@ -9,7 +9,7 @@ export const addLocationController = async (req, res) => {
 
     try {
         const userLocations = await userService.addLocation(req.body);
-        res.status(200).send({ message: `Location added successfully`, userLocations });
+        res.status(200).send({ message: `Location added successfully`});
     } catch (e) {
         res.status(400).send({
             message: `Unable to add Location`,

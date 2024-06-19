@@ -3,6 +3,8 @@ import { userService } from "../services/user.service.js";
 
 export const getLocationsController = async (req, res) => {
     const errors = validationResult(req);
+
+    console.log(errors);
     if (!errors.isEmpty()) {
         return res.status(422).send(`Unable to get Locations`);
     }

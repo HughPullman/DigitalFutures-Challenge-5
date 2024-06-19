@@ -17,18 +17,15 @@ export const changePasswordValidation = [
 ];
 
 export const addLocationValidation = [
-    check("username").exists().isString(),
-    check("password").exists().isString(),
+    check("id").exists().isString(),
     check("location").exists().isString()
 ];
 
 export const getLocationsValidation = [
-    check("username").exists().isString(),
-    check("password").exists().isString(),
+    check("id").exists()
 ];
 
 export const deleteLocationValidation = [
-    check("username").exists().isString(),
-    check("password").exists().isString(),
+    check("id").exists().isString(),
     check("location").exists().isString()
 ];

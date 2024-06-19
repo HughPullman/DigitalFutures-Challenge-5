@@ -4,7 +4,7 @@ import { userService } from "../services/user.service.js";
 export const deleteLocationController = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(422).send(`Unable to add Location`);
+        return res.status(422).send(`Unable to delete Location`);
     }
 
     try {
